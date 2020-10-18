@@ -1,157 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Password Generator</title>
+	<title>Random Password Generator</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-	<style type="text/css">
-	body{
-	background-color: #1a1a1a;
-	color: white;
-	padding-left: 10px;
-	padding-right: 10px;
-	}
-	.btn{
-		margin-top: 10px;
-		margin-bottom: 10px;
-		background-color: white;
-		width: 182px;
-		height: 30px;
-		border-radius: 5px;
-	}
-	.textBox{
-		width:30px;
-		font-family: fantasy;	
-	}
-	textarea{
-		font-size:25px;
-		font-weight: bold;
-		width: 420px;
-		margin-bottom: 10px
-	}
-	</style>
-
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<h1>Random Password Generator</h1>
-	<div class="all">
-		<div class="checkbox">
-			<div>
-				<input type="checkbox" id="numb">
-				<label for="numb">Numbers</label>
+	<div class="container">
+		<h1>Random Password Generator</h1>
+		<div class="all">
+			<div class="checkbox-div">
+				<div class="checkbox">
+					<input type="checkbox" id="numb">
+					<label for="numb">Numbers</label>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" id="letters">
+					<label for="letters">Letters</label>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" id="cLetters">
+					<label for="cLetters">Capital letters</label>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" id="symbols">
+					<label for="symbols">Symbols</label>
+				</div>
 			</div>
-			<div>
-				<input type="checkbox" id="letters">
-				<label for="letters">Letters</label>
+			<div class="num_char">
+				<label>Number of characters:</label>
+				<input type="text" id="txt"class="textBox" >
+				<input type="submit" value="Generate password" class="btn" id="btn"></input>
 			</div>
-			<div>
-				<input type="checkbox" id="cLetters">
-				<label for="cLetters">Capital letters</label>
-			</div>
-			<div>
-				<input type="checkbox" id="symbols">
-				<label for="symbols">Symbols</label>
-			</div>
-		</div>
-
-		<div class="num_char">
-			<label>Number of characters:</label>
-			<input type="text" id="txt"class="textBox" >
-			<input type="submit" value="Generate password" class="btn" id="btn"></input>
-		</div>
-	</div>	
-	
-	<textarea id="txtArea" name="comentário" rows="10" cols="40"></textarea>
-	<div>
-		<label class="name">by Matheus Aguiar</label>
+		</div>	
+		<textarea id="txtArea" name="comentário" rows="5"></textarea>
 	</div>
 
-	<script type="text/javascript">
-
-		var possible = null;
-
-		//add numbers to the variable 'possible' 
-		function select_numb(){
-			var check = document.getElementById("numb");
-			if (check.checked && possible==null){
-				possible = "0123456789";
-			}
-			else if(check.checked && possible!=null){
-				possible += "0123456789";
-			}
-
-		}
-
-		//add letters to the variable 'possible' 
-		function select_letters(){
-			var check = document.getElementById("letters");
-			if(check.checked && possible==null){
-				possible = "abcdefghijklmnopqrstuvwxyz";
-			}
-			else if(check.checked && possible!=null){
-				possible += "abcdefghijklmnopqrstuvwxyz";
-			}
-		}
-
-		//add capital letters to the variable 'possible' 
-		function select_cletters(){
-			var check = document.getElementById("cLetters");
-			if(check.checked && possible==null){
-				possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			  
-			}
-			else if(check.checked && possible !=null){
-				possible += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
-			}
-		}
-
-		//add symbols to the variable 'possible' 
-		function select_symbols(){
-			var check = document.getElementById("symbols");
-			if(check.checked && possible == null){
-				possible = "!@#$%^&";
-			  
-			}
-			else if(check.checked && possible != null){
-				possible += "!@#$%^&"; 
-			}
-		}
-
-		//call the functions 
-		function select(){
-			select_numb();
-			select_letters();
-			select_cletters();
-			select_symbols();
-		}
-
-		//get the HTML element
-		var $btn = document.getElementById('btn');
-
-		//vinculate the event to the HMLT element
-		$btn.addEventListener("click", function(){
-			select();
-
-			//get the quantity of characters
-		    var cont = document.getElementById('txt').value;
-		    var text = "";
-			
-			//generate the random characteres 
-		    for (var i = 0; i < cont; i++){
-			    text += possible.charAt(Math.floor(Math.random() * possible.length));
-			}
-
-			//Checks if the passwords options are selected
-			if (possible == null){
-				alert('Check the password options!');
-			}
-
-			//insert the random characteres into the textearea 
-			document.getElementById('txtArea').value = text;
-			possible = null;
-		});
-
-	</script>
+	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
