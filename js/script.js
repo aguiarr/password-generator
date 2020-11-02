@@ -1,5 +1,17 @@
 var possible = null;
 
+function copy() {
+    var copyText = document.getElementById("txtArea");
+  
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); 
+  
+    document.execCommand("copy");
+  }
+
+  var copyBtn = document.getElementById('copy');
+  copyBtn.addEventListener('click', copy);
+
 //add numbers to the variable 'possible' 
 function select_numb(){
     var check = document.getElementById("numb");
@@ -71,10 +83,6 @@ $btn.addEventListener("click", function(){
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
-    //Checks if the passwords options are selected
-    if (possible == null){
-        alert('Check the password options!');
-    }
 
     //insert the random characteres into the textearea 
     document.getElementById('txtArea').value = text;

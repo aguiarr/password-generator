@@ -1,0 +1,10 @@
+{
+    "name": "Password Generator",
+    "version": "1.2.0",
+    "description": "Generate a randown password",
+    "browser_action":{
+        "default_popup": "index.html"
+    },
+    "manifest_version": 2
+    
+}
