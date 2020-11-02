@@ -1,4 +1,4 @@
 # password-generator
 ### Random Password Generator
 
-A chrome extension that generates a random password.
+A chrome extension that generates random passwords.
